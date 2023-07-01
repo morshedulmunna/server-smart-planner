@@ -12,42 +12,19 @@ datasource db {
 }
 
 model User {
-  id             String      @id @default(cuid())
+  id             String @id @default(cuid())
   name           String
-  email          String      @unique
+  email          String @unique
   universityName String
   password       String
-  event          Event[]
-  todo           ClassTodo[]
-  message        Message[]
 }
 
-model Event {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  createAt    DateTime @default(now())
-  updateAt    DateTime @updatedAt
-  photo       String[]
-  User        User?    @relation(fields: [userId], references: [id])
-  userId      String?
-}
-
-model ClassTodo {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  createAt    DateTime @default(now())
-  updateAt    DateTime @updatedAt
-  User        User?    @relation(fields: [userId], references: [id])
-  userId      String?
-}
-
-model Message {
-  id       String   @id @default(cuid())
-  message  String
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
-  User     User?    @relation(fields: [userId], references: [id])
-  userId   String?
+model Todo {
+  id         String   @id @default(cuid())
+  title      String
+  short_des  String
+  start_time DateTime
+  end_time   DateTime
+  create_at  DateTime @default(now())
+  update_at  DateTime @updatedAt
 }
