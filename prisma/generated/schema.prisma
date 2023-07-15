@@ -18,3 +18,13 @@ model User {
   universityName String
   password       String
 }
+
+model Todo {
+  id         String   @id @default(cuid())
+  title      String
+  short_des  String
+  start_time DateTime
+  end_time   DateTime
+  create_at  DateTime @default(now())
+  update_at  DateTime @updatedAt
+}
