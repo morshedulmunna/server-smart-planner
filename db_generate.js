@@ -2,9 +2,7 @@
 const fs = require('fs');
 
 const dirs = [
-  '../web-view/src/types/prisma.d.ts',
-
-  '../server-smart-planner/src/types/prisma.d.ts',
+ 
 ];
 
 for (const dir of dirs) {

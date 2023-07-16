@@ -5,16 +5,39 @@ import { PrismaClient } from 'prisma/generated';
 export class TodoService {
   constructor(private readonly prisma: PrismaClient) {}
 
-  create(createTodoDto: any) {
+  async create(createTodoDto: any) {
+    const user = await this.prisma.user.findFirst({
+      where: {
+        email: createTodoDto.email,
+      },
+    });
+
     return this.prisma.todo.create({
       data: {
-        ...createTodoDto,
+        title: createTodoDto.title,
+        short_des: createTodoDto.short_des,
+        start_time: createTodoDto.start_time,
+        end_time: createTodoDto.end_time,
+        user: {
+          connect: {
+            id: user.id, // Replace 'user-id' with the actual user ID
+          },
+        },
       },
     });
   }
 
-  findAll() {
+  async findAll(email) {
+    const user = await this.prisma.user.findFirst({
+      where: {
+        email,
+      },
+    });
+
     return this.prisma.todo.findMany({
+      where: {
+        userId: user.id,
+      },
       orderBy: {
         create_at: 'desc',
       },

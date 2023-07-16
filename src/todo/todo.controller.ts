@@ -18,9 +18,9 @@ export class TodoController {
     return this.todoService.create(createTodoDto);
   }
 
-  @Get()
-  findAll() {
-    return this.todoService.findAll();
+  @Get('/:email')
+  findAll(@Param('email') email: string) {
+    return this.todoService.findAll(email);
   }
 
   @Get(':id')

@@ -120,7 +120,8 @@ exports.Prisma.TodoScalarFieldEnum = {
   start_time: 'start_time',
   end_time: 'end_time',
   create_at: 'create_at',
-  update_at: 'update_at'
+  update_at: 'update_at',
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {
@@ -131,6 +132,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 
